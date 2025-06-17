@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function BallsSuspendEffect() {
   const effectRef = useRef<HTMLDivElement>(null);
@@ -7,8 +7,8 @@ export default function BallsSuspendEffect() {
     if (!effectRef.current) return;
 
     // Crear una timeline para cada elemento flotante
-    const elements = effectRef.current.querySelectorAll('.floating-ball');
-    
+    const elements = effectRef.current.querySelectorAll(".floating-ball");
+
     elements.forEach((element, index) => {
       gsap.to(element, {
         y: gsap.utils.random(-20, 20),
@@ -29,12 +29,15 @@ export default function BallsSuspendEffect() {
   }, []);
 
   return (
-    <div ref={effectRef} className="absolute inset-0 pointer-events-none overflow-hidden">
+    <div
+      ref={effectRef}
+      className="absolute inset-0 pointer-events-none overflow-hidden"
+    >
       {/* Elementos flotantes principales */}
       <div className="floating-ball absolute top-1/4 left-1/4 w-12 h-12 rounded-full bg-primary-500/30 backdrop-blur-sm border border-primary-500/20 shadow-lg shadow-primary-500/20"></div>
       <div className="floating-ball absolute top-1/3 right-1/4 w-16 h-16 rounded-full bg-purple-500/30 backdrop-blur-sm border border-purple-500/20 shadow-lg shadow-purple-500/20"></div>
       <div className="floating-ball absolute bottom-1/4 left-1/3 w-20 h-20 rounded-full bg-blue-500/30 backdrop-blur-sm border border-blue-500/20 shadow-lg shadow-blue-500/20"></div>
-      
+
       {/* Elementos flotantes más pequeños */}
       <div className="floating-ball absolute top-1/2 right-1/3 w-8 h-8 rounded-full bg-primary-400/20 backdrop-blur-sm border border-primary-400/10"></div>
       <div className="floating-ball absolute bottom-1/3 right-1/4 w-6 h-6 rounded-full bg-purple-400/20 backdrop-blur-sm border border-purple-400/10"></div>

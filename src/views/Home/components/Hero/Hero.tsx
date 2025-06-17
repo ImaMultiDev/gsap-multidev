@@ -4,12 +4,53 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null);
+interface HeroElement extends HTMLDivElement {
+  animations?: gsap.core.Tween[];
+}
 
+export default function Hero() {
+  const heroRef = useRef<HeroElement>(null);
   useEffect(() => {
+    // Resetear el estado inicial
+    gsap.set(
+      [
+        ".hero-title",
+        ".hero-subtitle",
+        ".hero-description",
+        ".hero-buttons",
+        ".hero-demo",
+      ],
+      {
+        clearProps: "all",
+      }
+    );
+
     // Animación de entrada
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({
+      onComplete: () => {
+        // Iniciar animaciones cíclicas solo después de la animación de entrada
+        const mainElementAnim = gsap.to(".main-demo-element", {
+          x: 100,
+          rotation: 360,
+          duration: 2,
+          ease: "power2.inOut",
+          repeat: -1,
+          yoyo: true,
+        });
+
+        const secondaryElementsAnim = gsap.to(".secondary-element", {
+          y: -15,
+          duration: 2,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+          stagger: 0.3,
+        });
+
+        // Guardar las animaciones en el contexto para limpiarlas después
+        heroRef.current.animations = [mainElementAnim, secondaryElementsAnim];
+      },
+    });
 
     tl.from(".hero-title", {
       duration: 1,
@@ -58,25 +99,14 @@ export default function Hero() {
         "-=0.6"
       );
 
-    // Animación del elemento principal que coincide con el código mostrado
-    gsap.to(".main-demo-element", {
-      x: 100,
-      rotation: 360,
-      duration: 2,
-      ease: "power2.inOut",
-      repeat: -1,
-      yoyo: true,
-    });
-
-    // Animaciones decorativas de los elementos secundarios
-    gsap.to(".secondary-element", {
-      y: -15,
-      duration: 2,
-      ease: "sine.inOut",
-      yoyo: true,
-      repeat: -1,
-      stagger: 0.3,
-    });
+    // Cleanup function
+    return () => {
+      if (heroRef.current?.animations) {
+        heroRef.current.animations.forEach((animation) => animation.kill());
+      }
+      tl.kill();
+      gsap.killTweensOf([".main-demo-element", ".secondary-element"]);
+    };
   }, []);
 
   return (
