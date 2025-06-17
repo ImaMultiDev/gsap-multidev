@@ -3,8 +3,8 @@
 import React, { useRef } from "react";
 import Link from "next/link";
 import { Zap, BookOpen, Code, Users, Star } from "lucide-react";
-import Hero from "@/views/Home/components/Hero/Hero";
 import { chapters } from "@/data/chapters";
+import Hero from "./components/Hero/Hero";
 
 export default function HomeView() {
   const featuresRef = useRef<HTMLDivElement>(null);

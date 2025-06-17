@@ -48,7 +48,9 @@ export default function Hero() {
         });
 
         // Guardar las animaciones en el contexto para limpiarlas después
-        heroRef.current.animations = [mainElementAnim, secondaryElementsAnim];
+        if (heroRef.current) {
+          heroRef.current.animations = [mainElementAnim, secondaryElementsAnim];
+        }
       },
     });
 

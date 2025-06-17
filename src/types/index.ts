@@ -26,7 +26,7 @@ export interface AnimationConfig {
   delay?: number;
   repeat?: number;
   yoyo?: boolean;
-  [key: string]: any;
+  [key: string]: string | number | boolean | undefined;
 }
 
 export interface CodeBlockProps {
