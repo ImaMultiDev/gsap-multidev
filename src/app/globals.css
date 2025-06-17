@@ -15,8 +15,6 @@
 
 * {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
 }
 
 html,
@@ -36,6 +34,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+a:hover {
+  font-weight: bold;
 }
 
 /* Scrollbar personalizado */
@@ -100,6 +102,92 @@ a {
   line-height: 1.7;
 }
 
+/* Layout y espaciado base */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+}
+
+.content-wrapper {
+  width: 100%;
+  padding: 2rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .content-wrapper {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-wrapper {
+    padding: 4rem 2.5rem;
+  }
+}
+
+/* Espaciado de secciones */
+section {
+  margin-bottom: 3rem;
+  padding: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  section {
+    margin-bottom: 4rem;
+    padding: 2rem;
+  }
+}
+
+/* Cards y bloques de contenido */
+.card,
+.content-block {
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 768px) {
+
+  .card,
+  .content-block {
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* Espaciado de texto */
+h1 {
+  line-height: 1.2;
+}
+
+h2 {
+  line-height: 1.3;
+}
+
+h3 {
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+h4,
+h5,
+h6 {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+}
+
 .prose ul {
   margin: 1.5rem 0;
   padding-left: 1.5rem;
@@ -148,6 +236,33 @@ a {
 
 .prose a:hover {
   color: #60a5fa;
+}
+
+/* Efectos de brillo */
+.glow-primary {
+  box-shadow: 0 0 25px 5px rgba(99, 102, 241, 0.2);
+}
+
+.glow-yellow {
+  box-shadow: 0 0 20px 5px rgba(234, 179, 8, 0.2);
+}
+
+.glow-purple {
+  box-shadow: 0 0 15px 5px rgba(168, 85, 247, 0.2);
+}
+
+.floating-element {
+  filter: brightness(1.1);
+  will-change: transform;
+}
+
+/* Mejoras visuales para el hero */
+.hero-title {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive design */

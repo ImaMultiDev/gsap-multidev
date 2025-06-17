@@ -1,15 +1,15 @@
 "use client";
 
 import React from "react";
-import { Heart, Zap, Github, Twitter } from "lucide-react";
+import { Heart, Zap, Github, Linkedin } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-700 mt-auto">
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-gray-900 border-t border-gray-700">
+      <div className="container mx-auto my-8 px-4 md:px-6 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {/* Logo y descripción */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -23,9 +23,9 @@ export default function Footer() {
           </div>
 
           {/* Enlaces rápidos */}
-          <div className="space-y-4">
+          <div className="flex flex-col y-4">
             <h3 className="text-white font-semibold">Enlaces útiles</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="flex gap-2 flex-col text-sm text-blue-300">
               <li>
                 <a
                   href="https://gsap.com"
@@ -70,14 +70,14 @@ export default function Footer() {
           </div>
 
           {/* Información del proyecto */}
-          <div className="space-y-4">
+          <div className="flex flex-col">
             <h3 className="text-white font-semibold">Acerca del proyecto</h3>
             <p className="text-gray-400 text-sm">
               Este proyecto utiliza las últimas tecnologías web para ofrecer la
               mejor experiencia de aprendizaje.
             </p>
 
-            <div className="flex space-x-4">
+            <div className="px-4 flex gap-2">
               <a
                 href="#"
                 className="text-gray-400 hover:text-primary-400 transition-colors p-2 hover:bg-gray-800 rounded-lg"
@@ -90,7 +90,7 @@ export default function Footer() {
                 className="text-gray-400 hover:text-primary-400 transition-colors p-2 hover:bg-gray-800 rounded-lg"
                 title="Twitter"
               >
-                <Twitter size={20} />
+                <Linkedin size={20} />
               </a>
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function Footer() {
             <div className="flex items-center space-x-1 text-gray-400 text-sm">
               <span>&copy; {currentYear} GSAPMultidev. Hecho con</span>
               <Heart size={16} className="text-red-500 mx-1" />
-              <span>para la comunidad.</span>
+              <span>para la comunidad DEV.</span>
             </div>
 
             <div className="flex items-center space-x-4 text-xs text-gray-500">

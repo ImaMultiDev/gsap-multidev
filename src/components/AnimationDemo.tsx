@@ -13,7 +13,7 @@ export default function AnimationDemo({
 }: AnimationDemoProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const handlePlayAnimation = () => {
+  const handlePlayAnimation = React.useCallback(() => {
     setIsPlaying(true);
     animationFunction();
 
@@ -21,7 +21,7 @@ export default function AnimationDemo({
     setTimeout(() => {
       setIsPlaying(false);
     }, 3000);
-  };
+  }, [animationFunction]);
 
   // Auto-ejecutar animación cuando se monta el componente
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function AnimationDemo({
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [resetKey]);
+  }, [resetKey, handlePlayAnimation]);
 
   return (
     <div

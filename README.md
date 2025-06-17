@@ -27,7 +27,7 @@ Una plataforma educativa moderna para aprender **GSAP (GreenSock Animation Platf
 1. **Clona el repositorio**
 
    ```bash
-   git clone <url-del-repositorio>
+   git clone https://github.com/ImaMultiDev/gsap-multidev.git
    cd gsap_multidev
    ```
 

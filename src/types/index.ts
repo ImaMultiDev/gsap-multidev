@@ -4,11 +4,11 @@ export interface Chapter {
   subtitle: string;
   description: string;
   theory: string;
-  code: string;
-  animationFunction: () => void;
-  difficulty: "beginner" | "intermediate" | "advanced";
-  duration: string;
-  tags: string[];
+  code?: string;
+  animationFunction?: () => void;
+  difficulty?: "beginner" | "intermediate" | "advanced";
+  duration?: string;
+  tags?: string[];
 }
 
 export interface NavigationItem {

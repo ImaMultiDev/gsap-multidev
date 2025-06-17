@@ -31,21 +31,30 @@ export const chapters: Chapter[] = [
       <p><strong>Sintaxis básica:</strong></p>
       <pre><code>gsap.to(target, {duration: 1, x: 100, rotation: 360})</code></pre>
     `,
-    code: `// Animación básica con gsap.to()
-gsap.to("#box1", {
+    code: `
+// Reset inicial
+gsap.set(box, {
+  x: 0,
+  rotation: 0,
+  scale: 1,
+  backgroundColor: "#3b82f6",
+});
+
+// Animación básica con gsap.to()
+gsap.to(box, {
   duration: 2,
   x: 200,
   rotation: 360,
   scale: 1.5,
   backgroundColor: "#ff6b6b",
-  ease: "bounce.out"
+  ease: "bounce.out",
 });`,
     animationFunction: () => {
       const box = document.getElementById("box1");
       if (box) {
         // Reset inicial
         gsap.set(box, {
-          x: 0,
+          x: -100,
           rotation: 0,
           scale: 1,
           backgroundColor: "#3b82f6",
@@ -54,7 +63,7 @@ gsap.to("#box1", {
         // Animación
         gsap.to(box, {
           duration: 2,
-          x: 200,
+          x: 100,
           rotation: 360,
           scale: 1.5,
           backgroundColor: "#ff6b6b",
@@ -92,26 +101,39 @@ gsap.to("#box1", {
       <p>GSAP te permite usar:</p>
       <pre><code>gsap.to(element, {x: 100, rotation: 45, scale: 1.5})</code></pre>
     `,
-    code: `// Múltiples transformaciones
-gsap.to("#box2", {
-  duration: 1.5,
-  x: 150,
-  y: -50,
+    code: `
+// Reset inicial
+gsap.set(box, {
+  x: -100,
+  y: 50,
   scaleX: 2,
   scaleY: 0.5,
+  backgroundColor: "#3b82f6",
+  rotation: 0,
+  skewX: 0,
+});
+
+// Múltiples transformaciones
+gsap.to(box, {
+  duration: 1.5,
+  x: 100,
+  y: -50,
+  scaleX: 0.5,
+  scaleY: 2,
   rotation: 45,
   skewX: 10,
-  ease: "power2.inOut"
+  ease: "power2.inOut",
 });`,
     animationFunction: () => {
       const box = document.getElementById("box2");
       if (box) {
         // Reset inicial
         gsap.set(box, {
-          x: 0,
-          y: 0,
-          scaleX: 1,
-          scaleY: 1,
+          x: -100,
+          y: 50,
+          scaleX: 2,
+          scaleY: 0.5,
+          backgroundColor: "#3b82f6",
           rotation: 0,
           skewX: 0,
         });
@@ -119,10 +141,10 @@ gsap.to("#box2", {
         // Animación
         gsap.to(box, {
           duration: 1.5,
-          x: 150,
+          x: 100,
           y: -50,
-          scaleX: 2,
-          scaleY: 0.5,
+          scaleX: 0.5,
+          scaleY: 2,
           rotation: 45,
           skewX: 10,
           ease: "power2.inOut",
@@ -159,7 +181,24 @@ gsap.to("#box2", {
         <li><strong>Relativo:</strong> "+=0.5" = empieza 0.5s después del final anterior</li>
       </ul>
     `,
-    code: `// Timeline con múltiples animaciones secuenciales
+    code: `
+animationFunction: () => {
+  const boxes = [
+    document.getElementById("box3a"),
+    document.getElementById("box3b"),
+    document.getElementById("box3c"),
+];
+
+if (boxes.every((box) => box)) {
+  // Reset inicial
+  gsap.set(".box3", {
+    x: 0,
+    scale: 1,
+    rotation: 0,
+    backgroundColor: "#3b82f6",
+  });
+    
+// Timeline con múltiples animaciones secuenciales
 const tl = gsap.timeline();
 
 tl.to("#box3a", {duration: 1, x: 100, backgroundColor: "#ff6b6b"})

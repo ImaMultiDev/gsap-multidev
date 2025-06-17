@@ -1,7 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { Clock, BookOpen, Tag, ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  Clock,
+  BookOpen,
+  Tag,
+  ChevronLeft,
+  ChevronRight,
+  Home,
+} from "lucide-react";
 import { ChapterLayoutProps } from "../types";
 import { navigationItems } from "../data/chapters";
 import CodeBlock from "./CodeBlock";
@@ -40,28 +47,34 @@ export default function ChapterLayout({ chapter }: ChapterLayoutProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-6 py-12 max-w-6xl">
+      <div className="container mx-auto max-w-6xl py-8 md:py-12 lg:py-16">
         {/* Breadcrumb */}
-        <nav className="flex items-center space-x-2 text-sm text-gray-400 mb-8">
-          <Link href="/" className="hover:text-primary-400 transition-colors">
-            Inicio
+        <nav className="flex items-center gap-3 text-sm text-gray-400 my-4 md:my-6 px-4 md:px-6 lg:px-8">
+          <Link
+            href="/"
+            className="hover:text-primary-400 transition-colors flex items-center space-x-2"
+          >
+            <Home size={16} />
+            <span>Inicio</span>
           </Link>
           <span>/</span>
-          <span className="text-foreground">{chapter.title}</span>
-        </nav>
-
+          <span className="text-foreground font-medium">{chapter.title}</span>
+        </nav>{" "}
         {/* Header del capítulo */}
-        <div className="mb-12 animate-fade-in">
-          <div className="flex flex-wrap items-center gap-4 mb-6">
-            <span
-              className={`px-4 py-2 rounded-full text-sm font-medium ${
-                difficultyColors[chapter.difficulty]
-              }`}
-            >
-              {difficultyLabels[chapter.difficulty]}
-            </span>
-            <div className="flex items-center text-gray-400 text-sm">
-              <Clock size={16} className="mr-1" />
+        <div className="my-8 animate-fade-in px-4 md:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center gap-6 mb-8">
+            {chapter.difficulty && (
+              <span
+                className={`px-5 py-2.5 rounded-full text-sm font-medium shadow-lg ${
+                  difficultyColors[chapter.difficulty]
+                }`}
+              >
+                {difficultyLabels[chapter.difficulty]}
+              </span>
+            )}
+
+            <div className="flex items-center text-gray-400 text-sm bg-gray-800/50 px-4 py-2 rounded-full">
+              <Clock size={16} className="mr-2" />
               {chapter.duration}
             </div>
           </div>
@@ -76,24 +89,25 @@ export default function ChapterLayout({ chapter }: ChapterLayoutProps) {
             {chapter.description}
           </p>
 
-          <div className="flex flex-wrap gap-3">
-            {chapter.tags.map((tag, index) => (
-              <span
-                key={index}
-                className="inline-flex items-center px-3 py-2 bg-gray-800 text-gray-300 text-sm rounded border border-gray-700"
-              >
-                <Tag size={14} className="mr-2" />
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-
+          {Array.isArray(chapter.tags) && chapter.tags.length > 0 && (
+            <div className="flex flex-wrap gap-3">
+              {chapter.tags.map((tag, index) => (
+                <span
+                  key={index}
+                  className="inline-flex items-center px-3 py-2 bg-gray-800 text-gray-300 text-sm rounded border border-gray-700"
+                >
+                  <Tag size={14} className="mr-2" />
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>{" "}
         {/* Contenido principal en grid */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 mb-16">
+        <div className="flex gap-12 mb-16 px-4 md:px-6 lg:px-8">
           {/* Sección de teoría */}
-          <div className="space-y-8">
-            <div className="bg-gray-900 rounded-lg border border-gray-700 p-8 animate-slide-up">
+          <div>
+            <div className="bg-gray-900/50 rounded-xl border border-gray-700 p-8 lg:p-10 animate-slide-up shadow-lg">
               <div className="flex items-center mb-6">
                 <BookOpen size={20} className="text-primary-500 mr-3" />
                 <h2 className="text-2xl font-semibold text-foreground">
@@ -108,18 +122,20 @@ export default function ChapterLayout({ chapter }: ChapterLayoutProps) {
           </div>
 
           {/* Sección de demo y código */}
-          <div className="space-y-8">
+          <div className="min-w-1/3">
             {/* Demo de animación */}
             <div
               className="animate-slide-up"
               style={{ animationDelay: "0.1s" }}
             >
-              <AnimationDemo
-                id={chapter.id}
-                animationFunction={chapter.animationFunction}
-                resetKey={resetKey}
-                height="400px"
-              />
+              {chapter.animationFunction && (
+                <AnimationDemo
+                  id={chapter.id}
+                  animationFunction={chapter.animationFunction}
+                  resetKey={resetKey}
+                  height="400px"
+                />
+              )}
             </div>
 
             {/* Bloque de código */}
@@ -127,11 +143,12 @@ export default function ChapterLayout({ chapter }: ChapterLayoutProps) {
               className="animate-slide-up"
               style={{ animationDelay: "0.2s" }}
             >
-              <CodeBlock code={chapter.code} title="Código de la animación" />
+              {chapter.code && (
+                <CodeBlock code={chapter.code} title="Código de la animación" />
+              )}
             </div>
           </div>
         </div>
-
         {/* Navegación entre capítulos */}
         <div className="flex justify-between items-center pt-12 border-t border-gray-700">
           <div className="flex-1">

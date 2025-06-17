@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,9 +13,9 @@ export const metadata: Metadata = {
     "Plataforma educativa para aprender GSAP (GreenSock Animation Platform) de forma visual y estructurada. Desde conceptos básicos hasta animaciones avanzadas.",
   keywords:
     "GSAP, animaciones, JavaScript, CSS, web development, tutorial, aprender",
-  authors: [{ name: "GSAPMultidev Team" }],
-  creator: "GSAPMultidev",
-  publisher: "GSAPMultidev",
+  authors: [{ name: "ImaMultidev" }],
+  creator: "ImaMultidev",
+  publisher: "ImaMultidev",
   formatDetection: {
     email: false,
     address: false,
@@ -66,11 +66,13 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${inter.className} antialiased min-h-screen flex flex-col`}
+        className={`${inter.className} antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
         <ThemeProvider>
           <Navbar />
-          <main className="flex-grow pt-16">{children}</main>
+          <main className="flex-grow px-4 md:px-6 lg:px-8 min-h-[calc(100vh-5rem)]">
+            {children}
+          </main>
           <Footer />
         </ThemeProvider>
       </body>

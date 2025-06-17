@@ -13,8 +13,8 @@ import {
   Home,
   BookOpen,
 } from "lucide-react";
-import { useTheme } from "../contexts/ThemeContext";
-import { navigationItems } from "../data/chapters";
+import { useTheme } from "../../contexts/ThemeContext";
+import { navigationItems } from "../../data/chapters";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,46 +59,50 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-gray-700 z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <nav className="relative top-0 w-full bg-background/95 backdrop-blur-sm border-b border-gray-700 z-50">
+      <div className="container">
+        <div className="flex items-center justify-between h-20 px-6 md:px-8 lg:px-10">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center space-x-2 text-xl font-bold text-foreground hover:text-primary-400 transition-colors"
+            className="flex items-center gap-3 text-xl font-bold text-foreground hover:text-primary-400 transition-colors"
           >
-            <Zap size={24} className="text-primary-500" />
+            <Zap size={28} className="text-primary-500" />
             <span>GSAPMultidev</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            <div className="flex items-center space-x-4">
-              {/* Home */}
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              {/* Home */}{" "}
               <Link
                 href="/"
-                className={`flex items-center space-x-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 ${
+                className={`flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 ${
                   pathname === "/"
-                    ? "bg-primary-600 text-white"
-                    : "text-gray-300 hover:text-white hover:bg-gray-800"
+                    ? "bg-primary-600 text-white shadow-lg shadow-primary-500/20"
+                    : "text-gray-300 hover:text-white hover:bg-gray-800/60"
                 }`}
               >
-                <Home size={16} />
-                <span>Inicio</span>
+                <div className="flex gap-2">
+                  <Home size={18} />
+                  <span>Inicio</span>
+                </div>
               </Link>
-
               {/* Dropdown Capítulos */}
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsChaptersOpen(!isChaptersOpen)}
-                  className={`flex items-center space-x-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 ${
+                  className={`flex gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:scale-105 ${
                     navigationItems.some((item) => pathname === item.href)
                       ? "bg-primary-600 text-white"
                       : "text-gray-300 hover:text-white hover:bg-gray-800"
                   }`}
                 >
-                  <BookOpen size={16} />
-                  <span>Capítulos</span>
+                  <div className="flex gap-2">
+                    <BookOpen size={16} />
+                    <span>Capítulos</span>
+                  </div>
+
                   <ChevronDown
                     size={16}
                     className={`transition-transform ${
@@ -109,15 +113,15 @@ export default function Navbar() {
 
                 {/* Dropdown Menu */}
                 {isChaptersOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-80 bg-gray-900 border border-gray-700 rounded-lg shadow-xl overflow-hidden animate-slide-up">
+                  <div className="absolute top-full left-0 p-4 mt-2 w-80 bg-gray-900 border border-gray-700 rounded-lg shadow-xl overflow-hidden animate-slide-up">
                     <div className="max-h-96 overflow-y-auto">
-                      <div className="p-2">
+                      <div className="flex flex-col gap-3">
                         {navigationItems.map((item, index) => (
                           <Link
                             key={item.id}
                             href={item.href}
                             onClick={() => setIsChaptersOpen(false)}
-                            className={`flex items-center justify-between p-3 rounded-lg transition-all duration-200 hover:bg-gray-800 group ${
+                            className={`flex items-center justify-between rounded-lg transition-all duration-200 hover:bg-gray-800 group ${
                               pathname === item.href
                                 ? "bg-primary-600/20 border border-primary-500/30"
                                 : ""
