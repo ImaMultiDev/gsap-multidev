@@ -6,11 +6,15 @@
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Code', 'Roboto Mono',
     'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Code',
     'Droid Sans Mono', 'Courier New', monospace;
+  color-scheme: dark;
 }
 
-[data-theme="light"] {
-  --background: #ffffff;
-  --foreground: #171717;
+html {
+  color-scheme: dark;
+}
+
+body {
+  color-scheme: dark;
 }
 
 * {

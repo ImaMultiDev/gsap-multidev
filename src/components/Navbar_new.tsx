@@ -6,8 +6,6 @@ import { usePathname } from "next/navigation";
 import {
   Menu,
   X,
-  Sun,
-  Moon,
   Zap,
   ChevronDown,
   Home,
@@ -16,14 +14,12 @@ import {
   BookOpenCheck,
   Trophy,
 } from "lucide-react";
-import { useTheme } from "@/contexts/ThemeContext";
 import { navigationItems } from "@/data/chapters";
 
 export default function NavbarNew() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isChaptersOpen, setIsChaptersOpen] = useState(false);
   const [isGSAPlandOpen, setIsGSAPlandOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
   const pathname = usePathname();
   const dropdownRef = useRef<HTMLDivElement>(null);
   const gsaplandRef = useRef<HTMLDivElement>(null);
@@ -199,23 +195,9 @@ export default function NavbarNew() {
                 )}
               </div>
             </div>
-
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors"
-              title={`Cambiar a tema ${theme === "dark" ? "claro" : "oscuro"}`}
-            >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
           </div>
 
           <div className="md:hidden flex items-center gap-2">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors"
-            >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white transition-colors"

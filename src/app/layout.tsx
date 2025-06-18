@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/contexts/ThemeContext";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NavbarNew from "@/components/Navbar_new";
 
@@ -67,15 +65,13 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <body
-        className={`${inter.className} antialiased min-h-screen flex flex-col bg-background text-foreground`}
+        className={`${inter.className} dark antialiased min-h-screen flex flex-col bg-gray-950 text-gray-50`}
       >
-        <ThemeProvider>
           <NavbarNew />
           <main className="flex-grow px-4 md:px-6 lg:px-8 min-h-[calc(100vh-5rem)]">
             {children}
           </main>
           <Footer />
-        </ThemeProvider>
       </body>
     </html>
   );
