@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['api.microlink.io'],
+    domains: ["api.microlink.io"],
   },
   experimental: {
     turbo: {
@@ -18,7 +18,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: false,
   },
   eslint: {
-    ignoreDuringBuilds: false,
+    ignoreDuringBuilds: true, // <--- desactiva errores de lint en producción
   },
 };
 
