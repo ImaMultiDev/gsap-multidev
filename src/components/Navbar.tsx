@@ -13,8 +13,8 @@ import {
   Home,
   BookOpen,
 } from "lucide-react";
-import { useTheme } from "../../contexts/ThemeContext";
-import { navigationItems } from "../../data/chapters";
+import { useTheme } from "../contexts/ThemeContext";
+import { navigationItems } from "../data/chapters";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

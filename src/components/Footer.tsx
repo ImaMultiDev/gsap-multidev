@@ -77,7 +77,7 @@ export default function Footer() {
               mejor experiencia de aprendizaje.
             </p>
 
-            <div className="px-4 flex gap-2">
+            <div className="flex gap-2">
               <a
                 href="#"
                 className="text-gray-400 hover:text-primary-400 transition-colors p-2 hover:bg-gray-800 rounded-lg"

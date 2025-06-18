@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Play } from "lucide-react";
+import { BookOpen, Play } from "lucide-react";
 import BallsSuspendEffect from "./BallsSuspendEffect";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
@@ -126,7 +126,7 @@ export default function Hero() {
           <div className="text-center lg:text-left space-y-6">
             <h1 className="hero-title text-5xl lg:text-6xl xl:text-7xl font-bold">
               <span className="block mb-3 text-white">Aprende</span>
-              <span className="bg-gradient-to-r from-primary-400 to-purple-400 bg-clip-text text-transparent block mb-3">
+              <span className="bg-gradient-to-r from-blue-400 to-purple-300 bg-clip-text text-transparent block mb-3">
                 GSAP
               </span>
               <span className="block text-white">Visualmente</span>
@@ -145,11 +145,10 @@ export default function Hero() {
             <div className="hero-buttons flex flex-col sm:flex-row gap-6 justify-center lg:justify-start pt-4">
               <Link
                 href="/instalacion"
-                className="inline-flex items-center px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-primary-500/25"
+                className="inline-flex items-center px-8 py-4 bg-primary-600 border-1 hover:bg-primary-700 text-white rounded-lg font-semibold transition-all duration-200 hover:scale-105 shadow-lg hover:shadow-primary-500/25"
               >
                 <Play size={20} className="mr-2" />
                 Comenzar Tutorial
-                <ArrowRight size={20} className="ml-2" />
               </Link>
 
               <Link

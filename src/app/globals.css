@@ -130,13 +130,12 @@ a:hover {
 
 /* Espaciado de secciones */
 section {
-  margin-bottom: 3rem;
   padding: 1.5rem;
 }
 
 @media (min-width: 768px) {
   section {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     padding: 2rem;
   }
 }

@@ -84,7 +84,7 @@ export default function HomeView() {
       </section>
 
       {/* Chapters Section */}
-      <section id="capitulos" ref={chaptersRef} className="py-16">
+      <section id="capitulos" ref={chaptersRef}>
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
