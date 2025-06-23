@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Zap size={24} className="text-primary-500" />
-              <span className="text-xl font-bold text-white">GSAPMultidev</span>
+              <span className="text-xl font-bold text-white">GSAPMotion</span>
             </div>
             <p className="text-gray-400 text-sm">
               Plataforma educativa para aprender GSAP de forma visual y
@@ -100,7 +100,7 @@ export default function Footer() {
         <div className="border-t border-gray-700 mt-8 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
             <div className="flex items-center space-x-1 text-gray-400 text-sm">
-              <span>&copy; {currentYear} GSAPMultidev. Hecho con</span>
+              <span>&copy; {currentYear} GSAPMotion. Hecho con</span>
               <Heart size={16} className="text-red-500 mx-1" />
               <span>para la comunidad DEV.</span>
             </div>

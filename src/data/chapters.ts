@@ -1131,29 +1131,46 @@ stagger: {
       </ul>
     `,
     code: `
-// Stagger básico con dirección
-gsap.from(".stagger-item", {
-  duration: 0.8,
-  y: 50,
-  opacity: 0,
-  stagger: {
-    amount: 1,
-    from: "start"
-  },
-  ease: "back.out(1.7)"
-});
+animationFunction: () => {
+    const staggerItems = document.querySelectorAll(".stagger-demo");
 
-// Stagger con configuración avanzada
-gsap.to(".stagger-advanced", {
-  duration: 1,
-  scale: 1.2,
-  rotation: 360,
-  stagger: {
-    amount: 2,
-    from: "center",
-    ease: "power2.inOut"
-  }
-});`,
+    if (staggerItems.length > 0) {
+      // Reset inicial
+      gsap.set(staggerItems, {
+        y: 30,
+        opacity: 0,
+        scale: 0.8,
+        rotation: 0,
+      });
+
+      // Stagger animation
+      const tl = gsap.timeline();
+
+      tl.to(staggerItems, {
+        duration: 0.8,
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        stagger: {
+          amount: 1,
+          from: "start",
+        },
+        ease: "back.out(1.7)",
+      }).to(
+        staggerItems,
+        {
+          duration: 0.6,
+          rotation: 360,
+          stagger: {
+            amount: 0.5,
+            from: "center",
+          },
+          ease: "power2.inOut",
+        },
+        "-=0.3"
+      );
+    }
+  },`,
     animationFunction: () => {
       const staggerItems = document.querySelectorAll(".stagger-demo");
 
