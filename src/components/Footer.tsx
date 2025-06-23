@@ -1,7 +1,10 @@
 "use client";
 
 import React from "react";
-import { Heart, Zap, Github, Linkedin } from "lucide-react";
+import { Heart, Github, Linkedin } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import AnimationLogo from "./AnimationLogo";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -12,9 +15,21 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {/* Logo y descripción */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <Zap size={24} className="text-primary-500" />
-              <span className="text-xl font-bold text-white">GSAPMotion</span>
+            <div className="flex items-center gap-14">
+              <Link
+                href="/"
+                className="flex items-center gap-3 text-xl font-bold hover:text-primary-400"
+              >
+                <AnimationLogo />
+              </Link>
+              <div className="items-center">
+                <Image
+                  src="/logo/logo_192.png"
+                  alt="GSAPMotion"
+                  width={82}
+                  height={82}
+                />
+              </div>
             </div>
             <p className="text-gray-400 text-sm">
               Plataforma educativa para aprender GSAP de forma visual y

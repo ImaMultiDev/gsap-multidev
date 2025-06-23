@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { navigationItems } from "@/data/chapters";
 import AnimationLogo from "./AnimationLogo";
+import Image from "next/image";
 
 export default function NavbarNew() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -50,12 +51,22 @@ export default function NavbarNew() {
     <nav className="relative top-0 w-full bg-background/95 backdrop-blur-sm border-b border-gray-700 z-50">
       <div className="container mx-auto">
         <div className="flex items-center justify-between h-20 px-6">
-          <Link
-            href="/"
-            className="flex items-center gap-3 text-xl font-bold hover:text-primary-400"
-          >
-            <AnimationLogo />
-          </Link>
+          <div className="flex items-center gap-14">
+            <Link
+              href="/"
+              className="flex items-center gap-3 text-xl font-bold hover:text-primary-400"
+            >
+              <AnimationLogo />
+            </Link>
+            <div className="items-center">
+              <Image
+                src="/logo/logo_192.png"
+                alt="GSAPMotion"
+                width={82}
+                height={82}
+              />
+            </div>
+          </div>
 
           <div className="hidden md:flex items-center gap-4">
             <div className="flex items-center gap-2">
